@@ -1,67 +1,47 @@
 import "./styles.css";
-// @ts-ignore
-import Home from "./Home";
-// @ts-ignore
 import Layout from "./Layout";
-// @ts-ignore
 import Trang1 from "./Trang1";
-// @ts-ignore
 import Chitietsanpham from "./Chitietsanpham";
-
-// @ts-ignore
-import ProductDetail from "./ProductDetail";
-
-// @ts-ignore
-import ListProducts from "./ListProducts";
-
-// @ts-ignore
 import ListProducts_SP from "./ListProducts_SP";
-
-// @ts-ignore
 import Trang2 from "./Trang2";
+import LoginPage from "./LoginPage";
+import LogoutPage from "./LogoutPage";
+import ProtectedRoute from "./ProtectedRoute";
+import ListProducts_SP_Admin from "./ListProducts_SP_Admin";
+import EditProduct from "./EditProduct";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-//@ts-ignore
-import LoginPage from "./LoginPage";
-//@ts-ignore
-import LogoutPage from "./LogoutPage";
-//@ts-ignore
-import ProtectedRoute from "./ProtectedRoute";
-//@ts-ignore
-import ListProducts_SP_Admin from "./ListProducts_SP_Admin";
-//@ts-ignore
-import EditProduct from "./EditProduct";
-
 export default function App() {
-  // return <Layout />;
-
   return (
     <BrowserRouter>
       <Routes>
-        {/* ✅ Layout chung cho toàn bộ hệ thống */}
+        {/* Layout chung cho toàn hệ thống */}
         <Route path="/" element={<Layout />}>
-          {/* Trang chính (cho người dùng vãng lai) */}
+          {/* Trang chính */}
           <Route index element={<ListProducts_SP />} />
           <Route path="trang1" element={<Trang1 />} />
           <Route path="trang2" element={<Trang2 />} />
           <Route path="sanpham/:id" element={<Chitietsanpham />} />
-          <Route path="/admin/edit/:id" element={<EditProduct />} />
 
-          {/* <Route path="detail/:id" element={<ProductDetail />} /> */}
-
-          {/* ✅ Trang đăng nhập (nằm trong Layout) */}
+          {/* Trang đăng nhập / đăng xuất */}
           <Route path="login" element={<LoginPage />} />
-
-          {/* ✅ Trang đăng xuất */}
           <Route path="logout" element={<LogoutPage />} />
 
-          {/* ✅ Trang quản trị (nằm trong Layout, chỉ Admin truy cập) */}
+          {/* Trang quản trị (chỉ admin) */}
           <Route
             path="admin/products"
             element={
               <ProtectedRoute>
                 <ListProducts_SP_Admin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="admin/edit/:id"
+            element={
+              <ProtectedRoute>
+                <EditProduct />
               </ProtectedRoute>
             }
           />

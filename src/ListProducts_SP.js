@@ -28,9 +28,10 @@ const ListProducts_SP = () => {
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          display: "flex",
+          overflowX: "auto", // scroll ngang
           gap: "20px",
+          padding: "10px 0",
         }}
       >
         {listProduct.map((p) => (
@@ -38,6 +39,8 @@ const ListProducts_SP = () => {
             key={p.id}
             onClick={() => navigate(`/detail/${p.id}`)}
             style={{
+              minWidth: "220px", // mỗi card cố định rộng
+              flex: "0 0 auto", // không co dãn, giữ minWidth
               border: "1px solid #ddd",
               borderRadius: "10px",
               padding: "12px",

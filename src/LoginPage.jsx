@@ -14,16 +14,28 @@ const LoginPage = () => {
     setLoading(true);
 
     setTimeout(() => {
-      if (username.trim() && password.trim()) {
+      // ADMIN: username "admin", password "123"
+      if (username === "admin" && password === "123") {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ username: "admin", role: "admin" })
+        );
+        alert("✅ Đăng nhập Admin thành công!");
+        navigate("/admin/products"); // admin mới được vào trang quản trị
+      } 
+      // USER bình thường
+      else if (username.trim() && password.trim()) {
         localStorage.setItem(
           "user",
           JSON.stringify({ username, role: "user" })
         );
         alert("✅ Đăng nhập thành công!");
-        navigate("/");
-      } else {
+        navigate("/Trang1"); // user sẽ vào trang bình thường
+      } 
+      else {
         alert("❌ Vui lòng nhập đầy đủ thông tin!");
       }
+
       setLoading(false);
     }, 1000);
   };
@@ -31,11 +43,8 @@ const LoginPage = () => {
   return (
     <div className="login-wrapper">
       <div className="login-card">
-        <img src={anhlogo1} alt="Logo" className="login-logo" />
-
+        <img src={anhlogo1} alt="Logo.png" className="login-logo" />
         <h2 className="login-title">Đăng nhập vào tài khoản</h2>
-        <p className="login-subtitle">Sử dụng tài khoản của bạn để tiếp tục</p>
-
         <form onSubmit={handleLogin} className="login-form">
           <div className="form-group">
             <label>Tên đăng nhập</label>
@@ -46,7 +55,6 @@ const LoginPage = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-
           <div className="form-group">
             <label>Mật khẩu</label>
             <input
@@ -56,33 +64,13 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
           <button type="submit" disabled={loading}>
             {loading ? "⏳ Đang xử lý..." : "Đăng nhập"}
           </button>
         </form>
-
         <p className="register-link">
           Bạn chưa có tài khoản? <a href="#">Tạo tài khoản mới</a>
         </p>
-
-        <div className="social-login">
-          <button className="social-btn google">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png"
-              alt="Google"
-            />
-            <span>Đăng nhập Google</span>
-          </button>
-
-          <button className="social-btn facebook">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-              alt="Facebook"
-            />
-            <span>Facebook</span>
-          </button>
-        </div>
       </div>
     </div>
   );
