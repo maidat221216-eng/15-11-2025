@@ -29,7 +29,7 @@ const ListProducts_SP = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gridTemplateColumns: "repeat(3, 1fr)", // mỗi hàng 3 sản phẩm
           gap: "20px",
         }}
       >
@@ -91,6 +91,22 @@ const ListProducts_SP = () => {
           </div>
         ))}
       </div>
+
+      {/* Responsive style */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            div[style*="grid-template-columns"] {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (max-width: 480px) {
+            div[style*="grid-template-columns"] {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
