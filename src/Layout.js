@@ -61,7 +61,7 @@ const Layout = () => {
                 </ul>
               </div>
 
-              {/* Logo */}
+              {/* Logo giữa */}
               <div id="logo" className="logo1" style={{ textAlign: "center" }}>
                 <img src={anhlogo} width="354" alt="Logo" />
               </div>
@@ -119,18 +119,20 @@ const Layout = () => {
           </div>
         </header>
 
-        {/* Video MP4 nằm giữa banner */}
+        {/* Video MP4 nằm giữa banner TO + ĐẸP */}
         <div
           style={{
             position: "absolute",
-            top: "60%", // hạ video xuống thấp hơn
+            top: "65%", // Bạn muốn xuống nữa thì tăng lên 70–75%
             left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex: 50,
+            width: "90%",
+            maxWidth: "900px", // video to max
           }}
         >
           <video
-            width="650"
+            width="100%"
             controls
             style={{
               borderRadius: "12px",
