@@ -19,7 +19,10 @@ const Layout = () => {
   };
 
   return (
-    <div className="layout-wrapper" style={{ position: "relative", minHeight: "100vh" }}>
+    <div
+      className="layout-wrapper"
+      style={{ position: "relative", minHeight: "100vh" }}
+    >
       {/* Hero Background đứng yên */}
       <div
         className="hero-bg"
@@ -38,13 +41,23 @@ const Layout = () => {
         {/* Header nằm trên banner */}
         <header>
           <div id="divheader" className="header1">
-            <div id="banner" className="banner1" style={{ position: "relative" }}>
+            <div
+              id="banner"
+              className="banner1"
+              style={{ position: "relative" }}
+            >
               {/* Menu trái */}
               <div id="topleft">
                 <ul className="ul1">
-                  <li><a href="/#">TRANG CHỦ</a></li>
-                  <li><a href="/trang1">EGOV</a></li>
-                  <li><a href="/admin/products">QUẢN TRỊ</a></li>
+                  <li>
+                    <a href="/#">TRANG CHỦ</a>
+                  </li>
+                  <li>
+                    <a href="/trang1">EGOV</a>
+                  </li>
+                  <li>
+                    <a href="/admin/products">QUẢN TRỊ</a>
+                  </li>
                 </ul>
               </div>
 
@@ -56,7 +69,11 @@ const Layout = () => {
               {/* Phần tìm kiếm */}
               <div
                 id="divtimkiem"
-                style={{ width: "300px", margin: "10px auto", textAlign: "center" }}
+                style={{
+                  width: "300px",
+                  margin: "10px auto",
+                  textAlign: "center",
+                }}
               >
                 Phần tìm kiếm
               </div>
@@ -88,7 +105,11 @@ const Layout = () => {
                   <a
                     href="/login"
                     className="login-link"
-                    style={{ color: "blue", fontWeight: "bold", textDecoration: "none" }}
+                    style={{
+                      color: "blue",
+                      fontWeight: "bold",
+                      textDecoration: "none",
+                    }}
                   >
                     Đăng nhập
                   </a>
@@ -98,30 +119,34 @@ const Layout = () => {
           </div>
         </header>
 
-        {/* Video YouTube nằm giữa banner */}
+        {/* Video MP4 nằm giữa banner */}
         <div
           style={{
             position: "absolute",
-            top: "50%",
+            top: "60%", // hạ video xuống thấp hơn
             left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex: 50,
           }}
         >
-          <iframe
-            width="640"
-            height="360"
-            src="https://www.youtube.com/embed/E7kcUv_-n5c"
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            style={{ borderRadius: "10px", boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
-          ></iframe>
+          <video
+            width="650"
+            controls
+            style={{
+              borderRadius: "12px",
+              boxShadow: "0 4px 15px rgba(0,0,0,0.35)",
+            }}
+          >
+            <source
+              src="https://upload.vmnghia.id.vn/uploads/files-1763351315538-171744923.mp4"
+              type="video/mp4"
+            />
+            Trình duyệt của bạn không hỗ trợ video.
+          </video>
         </div>
       </div>
 
-      {/* Nội dung chính (danh sách sản phẩm xuống dưới) */}
+      {/* Nội dung chính */}
       <main id="container" className="container">
         <Outlet />
       </main>
